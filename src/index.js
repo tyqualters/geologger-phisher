@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 
 async function logWithGeo(req) {
     console.log('Getting data...');
-    axios.get(`https://ipwhois.app/json/${req.ip}`).then(response => console.log(
+    axios.get(`https://ipwhois.app/json/${req.ip.substring('::ffff:'.length)}`).then(response => console.log(
         'New data:\n'
         + `\tIP address: ${req.ip}\n`
         + `\tLocation: ${response.data.success ? response.data.city : null}, ${response.data.success ? response.data.region : null}, ${response.data.success ? response.data.country : null}, ${response.data.success ? response.data.continent : null}\n`
